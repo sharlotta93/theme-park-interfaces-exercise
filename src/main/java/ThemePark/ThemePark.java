@@ -1,5 +1,6 @@
 package ThemePark;
 import Attractions.*;
+import Visitor.Visitor;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,12 @@ public class ThemePark {
 
     public ArrayList getAllReviewed() {
         return ratedUnit;
+    }
+
+    public void visit(Attraction attraction, Visitor visitor) {
+        if (visitor.totalCash() > attraction.defaultPrice() && attraction.isAllowedTo(visitor)) {
+            visitor.pay(attraction.defaultPrice());
+        }
     }
 }
 
